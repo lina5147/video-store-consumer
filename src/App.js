@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,19 +35,19 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+          <ul className='nav'>
+            <li className='nav-item'>
+              <Link className='nav-link' to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/search">Search</Link>
+            <li className='nav-item'>
+              <Link className='nav-link' to="/search">Search</Link>
             </li>
-            <li>
-              <Link to="/library">Library</Link>
+            <li className='nav-item'>
+              <Link className='nav-link' to="/library">Library</Link>
             </li>
-            <li>
-              <Link to="/customers">Customers</Link>
+            <li className='nav-item'>
+              <Link className='nav-link' to="/customers">Customers</Link>
             </li>
           </ul>
         </nav>
