@@ -1,5 +1,6 @@
 import React from 'react';
 import FoundMovie from './FoundMovie';
+import './SearchResults.css';
 
 const SearchResults = (props) => {
     const searchComponents = props.results.map((movie) => {
@@ -16,7 +17,7 @@ const SearchResults = (props) => {
     })
 
     return (
-        <div>
+        <div className='search_results'>
             {searchComponents}
         </div>
     )

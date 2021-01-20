@@ -20,7 +20,7 @@
   text-align: center;
 }
 
-.movie:hover {
+.movie-hover:hover {
   opacity: 50%;
   background-color: orange;
 }
