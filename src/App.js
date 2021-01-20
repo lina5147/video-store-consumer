@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -13,6 +14,9 @@ import Home from './components/Home'
 import Search from './components/Search'
 import Library from './components/Library'
 import Customers from './components/Customers'
+import MovieDetails from './components/MovieDetails'
+import Person from './components/Person';
+import Movie from './components/Movie'
 
 // class App extends Component {
 //   render() {
@@ -32,6 +36,44 @@ import Customers from './components/Customers'
 
 // export default App;
 export default function App() {
+
+  const [movieList, setMovieList] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [currentMovie, setCurrentMovie] = useState('');
+  const [customerList, setCustomerList] = useState([]);
+
+  console.log(currentMovie)
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/videos`)
+      .then((response) => {
+        setMovieList(response.data);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/customers`)
+      .then((response) => {
+        setCustomerList(response.data);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  }, []);
+
+
+  const selectedMovie = (id) => {
+    const movie = movieList.find((movie) => {
+      return movie.id === id;
+    });
+    setCurrentMovie(movie);
+  } 
+
+
   return (
     <Router>
       <div>
@@ -59,16 +101,21 @@ export default function App() {
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <Library movieList={movieList} onSelectedMovie={selectedMovie} />
           </Route>
           <Route path="/customers">
-            <Customers />
+            <Customers customerList={customerList} />
           </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
       </div>
+      <div>
+        <h2>Movie Selected</h2>
+        <MovieDetails movie={currentMovie} />
+      </div>
+
     </Router>
   );
 }
