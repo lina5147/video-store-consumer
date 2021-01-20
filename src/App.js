@@ -43,10 +43,11 @@ export default function App() {
   const [currentMovie, setCurrentMovie] = useState('');
   const [customerList, setCustomerList] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState('');
+  // const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   // console.log(currentMovie)
-  console.log(currentCustomer)
-
+  // console.log(currentCustomer)
 
   useEffect(() => {
     axios.get(`http://localhost:3000/videos`)
@@ -84,6 +85,29 @@ export default function App() {
     // console.log(currentCustomer)
   }
 
+  const onSearch = (term) => {
+    axios.get(`http://localhost:3000/videos/?query=${term}`)
+      .then((response) => {
+        setSearchResults(response.data);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        setErrorMessage(error.message)
+      }); 
+
+  };
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3000/videos/?query=${term}`)
+  //     .then((response) => {
+  //       setSearchResults(response.data);
+  //       console.log(response.data)
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error.message)
+  //     }); 
+  // })
+
 
   return (
     <Router>
@@ -109,7 +133,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
-              <Search />
+              <Search search={onSearch} />
           </Route>
           <Route path="/library">
             <section className='page'>

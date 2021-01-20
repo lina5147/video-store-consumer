@@ -1,10 +1,16 @@
 import React from 'react';
+import SearchBar from './SearchBar';
 
 
-const Search = () => {
+const Search = (props) => {
   return (
-    <h2>Search</h2>
+    <div>
+      <h2>Search</h2>
+      <SearchBar
+        search={props.search}
+      />
+    </div>
   )
-}
+};
 
 export default Search;
