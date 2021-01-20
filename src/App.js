@@ -15,7 +15,8 @@ import Search from './components/Search'
 import Library from './components/Library'
 import Customers from './components/Customers'
 import MovieDetails from './components/MovieDetails'
-import Person from './components/Person';
+import CustomerDetails from './components/CustomerDetails';
+import Customer from './components/Customer';
 import Movie from './components/Movie'
 
 // class App extends Component {
@@ -41,8 +42,10 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [currentMovie, setCurrentMovie] = useState('');
   const [customerList, setCustomerList] = useState([]);
+  const [currentCustomer, setCurrentCustomer] = useState('');
 
-  console.log(currentMovie)
+  // console.log(currentMovie)
+  console.log(currentCustomer)
 
 
   useEffect(() => {
@@ -72,6 +75,13 @@ export default function App() {
     });
     setCurrentMovie(movie);
   } 
+
+  const selectedCustomer = (customerId) => {
+    const customer = customerList.find((customer) => {
+      return customer.id === customerId;
+    });
+    setCurrentCustomer(customer);
+  }
 
 
   return (
@@ -104,7 +114,7 @@ export default function App() {
             <Library movieList={movieList} onSelectedMovie={selectedMovie} />
           </Route>
           <Route path="/customers">
-            <Customers customerList={customerList} />
+            <Customers customerList={customerList} onSelectedCustomer={selectedCustomer} />
           </Route>
           <Route path="/">
             <Home />
@@ -114,6 +124,8 @@ export default function App() {
       <div>
         <h2>Movie Selected</h2>
         <MovieDetails movie={currentMovie} />
+        <h2>Customer Selected</h2>
+        <CustomerDetails customer={currentCustomer} />
       </div>
 
     </Router>
