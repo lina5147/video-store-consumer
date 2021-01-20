@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -32,6 +33,30 @@ import Customers from './components/Customers'
 
 // export default App;
 export default function App() {
+
+  const [movieList, setMovieList] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [currentMovie, setCurrentMovie] = useState('')
+
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/videos`)
+      .then((response) => {
+        console.log(response.data)
+        setMovieList(response.data);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  }, []);
+
+
+  const selectedMovie = (id) => {
+    // 
+  } 
+
+
   return (
     <Router>
       <div>
@@ -59,7 +84,7 @@ export default function App() {
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <Library movieList={movieList}/>
           </Route>
           <Route path="/customers">
             <Customers />
