@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-
+import SearchResults from './SearchResults';
 
 const Search = (props) => {
   return (
@@ -9,7 +9,11 @@ const Search = (props) => {
       <SearchBar
         search={props.search}
       />
+      { props.results !== [] ? <SearchResults
+        results={props.result}
+      /> : '' }
     </div>
+
   )
 };
 

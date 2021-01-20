@@ -94,20 +94,7 @@ export default function App() {
       .catch((error) => {
         setErrorMessage(error.message)
       }); 
-
   };
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3000/videos/?query=${term}`)
-  //     .then((response) => {
-  //       setSearchResults(response.data);
-  //       console.log(response.data)
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message)
-  //     }); 
-  // })
-
 
   return (
     <Router>
@@ -133,7 +120,8 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
-              <Search search={onSearch} />
+            <Search search={onSearch} 
+            results={searchResults}/>
           </Route>
           <Route path="/library">
             <section className='page'>
