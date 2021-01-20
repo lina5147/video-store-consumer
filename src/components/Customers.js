@@ -18,6 +18,7 @@ const Customers = (props) => {
         account_credit={customer.account_credit}
         videos_checked_out_count={customer.videos_checked_out_count}
         key={customer.id}
+        onSelectedCustomer={props.onSelectedCustomer}
       />
 
     )

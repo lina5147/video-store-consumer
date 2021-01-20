@@ -81,6 +81,7 @@ export default function App() {
       return customer.id === customerId;
     });
     setCurrentCustomer(customer);
+    // console.log(currentCustomer)
   }
 
 
