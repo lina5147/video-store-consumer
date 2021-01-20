@@ -5,7 +5,7 @@ const Movie = (props) => {
   return (
     <div>
       <h4>{props.title}</h4>
-      <img src={props.image_url} alt='Movie poster'/>
+      <img onClick={() => {props.onSelectedMovie(props.id)}} src={props.image_url} alt='Movie poster'/>
     </div>
     
   )

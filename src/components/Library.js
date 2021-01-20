@@ -1,22 +1,7 @@
 import React, { useState, useEffect }  from 'react';
-import axios from 'axios';
 import Movie from './Movie';
 
 const Library = (props) => {
-
-  // const [movieList, setMovieList] = useState([])
-  // const [errorMessage, setErrorMessage] = useState(null);
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3000/videos`)
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       setMovieList(response.data);
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message);
-  //     });
-  // }, []);
 
   const movieComponents = props.movieList.map((movie) => {
     return (
@@ -28,6 +13,7 @@ const Library = (props) => {
         image_url={movie.image_url}
         external_id={movie.external_id}
         key={movie.id}
+        onSelectedMovie={props.onSelectedMovie}
       />
     )
   })

@@ -14,6 +14,8 @@ import Home from './components/Home'
 import Search from './components/Search'
 import Library from './components/Library'
 import Customers from './components/Customers'
+import MovieDetails from './components/MovieDetails'
+import Movie from './components/Movie'
 
 // class App extends Component {
 //   render() {
@@ -38,12 +40,12 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [currentMovie, setCurrentMovie] = useState('')
 
+  console.log(currentMovie)
 
 
   useEffect(() => {
     axios.get(`http://localhost:3000/videos`)
       .then((response) => {
-        console.log(response.data)
         setMovieList(response.data);
       })
       .catch((error) => {
@@ -53,7 +55,10 @@ export default function App() {
 
 
   const selectedMovie = (id) => {
-    // 
+    const movie = movieList.find((movie) => {
+      return movie.id === id;
+    });
+    setCurrentMovie(movie);
   } 
 
 
@@ -84,7 +89,7 @@ export default function App() {
             <Search />
           </Route>
           <Route path="/library">
-            <Library movieList={movieList}/>
+            <Library movieList={movieList} onSelectedMovie={selectedMovie} />
           </Route>
           <Route path="/customers">
             <Customers />
@@ -94,6 +99,11 @@ export default function App() {
           </Route>
         </Switch>
       </div>
+      <div>
+        <h2>Movie Selected</h2>
+        <MovieDetails movie={currentMovie} />
+      </div>
+
     </Router>
   );
 }
