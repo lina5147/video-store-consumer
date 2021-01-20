@@ -10,7 +10,7 @@ const Search = (props) => {
         search={props.search}
       />
       { props.results !== [] ? <SearchResults
-        results={props.result}
+        results={props.results}
       /> : '' }
     </div>
 
