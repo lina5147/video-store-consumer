@@ -126,9 +126,9 @@ export default function App() {
       </div>
       <div>
         <h2>Movie Selected</h2>
-        <MovieDetails movie={currentMovie} />
+        { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
         <h2>Customer Selected</h2>
-        <CustomerDetails customer={currentCustomer} />
+        { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
       </div>
 
     </Router>
