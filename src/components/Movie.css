@@ -1,0 +1,31 @@
+.movie {
+  background-color: rgb(89, 165, 210);
+
+  padding: 1em 0;
+  margin: 1.0rem;
+
+  min-height: 400px;
+  min-width: 225px;
+  flex-basis: 15%;
+
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  align-items: center;
+}
+
+.movie_content {
+  grid-column-start: 2;
+  text-align: center;
+}
+
+.movie:hover {
+  opacity: 50%;
+  background-color: orange;
+}
+
+.movie_content-text {
+  height: 6vh;
+  font-weight: 600;
+}

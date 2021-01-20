@@ -108,10 +108,12 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
-            <Search />
+              <Search />
           </Route>
           <Route path="/library">
-            <Library movieList={movieList} onSelectedMovie={selectedMovie} />
+            <section className='page'>
+              <Library movieList={movieList} onSelectedMovie={selectedMovie} />
+            </section>
           </Route>
           <Route path="/customers">
             <Customers customerList={customerList} onSelectedCustomer={selectedCustomer} />

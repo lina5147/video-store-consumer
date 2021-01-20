@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import Movie from './Movie';
+import './Library.css';
 
 const Library = (props) => {
 
@@ -19,7 +20,9 @@ const Library = (props) => {
   })
 
   return (
-    <div>{movieComponents}</div>
+    <div className='library'>
+      {movieComponents}
+    </div>
   )
 }
 
