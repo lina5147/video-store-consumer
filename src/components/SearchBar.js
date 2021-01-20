@@ -24,20 +24,19 @@ const SearchBar = (props) => {
             className='new-search__form'
             onSubmit={onFormSubmit}
         >
-        <div>
-            <label className='search-bar'>Search:</label>
-            <input 
-                onChange={onFieldChange}
-                placeholder='search'
-                name='search'
-                value={formFields.search}
-            />
-            <input
-                className='new-search__submit-button'
-                type='submit'
-                value='Submit'
-            />     
-        </div>
+            <div>
+                <input 
+                    onChange={onFieldChange}
+                    placeholder='search'
+                    name='search'
+                    value={formFields.search}
+                />
+                <input
+                    className='new-search__submit-button'
+                    type='submit'
+                    value='Submit'
+                />     
+            </div>
         </form>
     )
 };
