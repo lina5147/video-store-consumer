@@ -8,12 +8,6 @@ import Button from 'react-bootstrap/Button'
 const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
   return (
     <div>
-    {/* <h2>Movie Selected</h2>
-    { movie !== '' ? <MovieDetails movie={movie} /> : `Currently no movie is selected` }
-    <h2>Customer Selected</h2>
-    { customer !== '' ? <CustomerDetails customer={customer} /> : 'Currently no customer is selected' }
-    <button onClick={() => {rentalCallback()}} className='create_rental'>Create Rental</button>
-    { successfulRental ? 'Successful Rental' : ''} */}
       <Accordion defaultActiveKey="0">
         <Card>
           <Card.Header>
@@ -35,7 +29,7 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
             <Card.Body>{ customer !== '' ? <CustomerDetails customer={customer} /> : 'Currently no customer is selected' }</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <button onClick={() => {rentalCallback()}} className='create_rental'>Create Rental</button>
+        <button onClick={() => {rentalCallback()}} className='btn btn-secondary btn-lg btn-block'>Create Rental</button>
           { successfulRental ? 'Successful Rental' : ''}
       </Accordion>
   </div>
