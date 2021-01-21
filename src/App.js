@@ -87,20 +87,28 @@ export default function App() {
   }
 
   const addToLibrary = (externalId) => {
+
     const movieToAdd = searchResults.find((movie) => {
       return movie.external_id === externalId
     })
 
-    axios.post(`${URL}videos`, movieToAdd)
-    .then((response) => {
-      const updatedMovieList = [...movieList, response.data]
-      setMovieList(updatedMovieList);
-      setErrorMessage('');
-    })
-    .catch((error) => {
-      setErrorMessage(error.message);
-    });
+    const checkLibraryData = movieList.find((movie) => {
+      return movie.external_id === externalId
+    }) 
 
+    if (checkLibraryData) {
+      setErrorMessage('Already exists in the Libarary')
+    } else {
+      axios.post(`${URL}videos`, movieToAdd)
+      .then((response) => {
+        const updatedMovieList = [...movieList, response.data]
+        setMovieList(updatedMovieList);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+   }
   }
 
   const onSearch = (term) => {
