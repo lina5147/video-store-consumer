@@ -1,0 +1,15 @@
+.customers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(89, 165, 210)
+}
+
+.customers-hover:hover {
+    color: orange;
+}
+
+.customers-title {
+    text-align: center;
+    color: black;
+}
