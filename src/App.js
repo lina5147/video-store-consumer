@@ -37,6 +37,7 @@ import Movie from './components/Movie'
 
 // export default App;
 export default function App() {
+  const URL = 'http://localhost:3000/'
 
   const [movieList, setMovieList] = useState([])
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,7 +51,7 @@ export default function App() {
   // console.log(currentCustomer)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/videos`)
+    axios.get(`${URL}videos`)
       .then((response) => {
         setMovieList(response.data);
       })
@@ -60,7 +61,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/customers`)
+    axios.get(`${URL}customers`)
       .then((response) => {
         setCustomerList(response.data);
       })
@@ -85,8 +86,16 @@ export default function App() {
     // console.log(currentCustomer)
   }
 
+
+  // function that adds a new movie to the library
+  // parameter - external id
+  // check if movie exists in our library
+  // if it does not exist then we will push it into a new movie list array
+    // and set movie list state with that array
+  // if it does exist, send update error state with message to show on page
+
   const onSearch = (term) => {
-    axios.get(`http://localhost:3000/videos/?query=${term}`)
+    axios.get(`${URL}videos/?query=${term}`)
       .then((response) => {
         setSearchResults(response.data);
         console.log(response.data)
@@ -95,6 +104,20 @@ export default function App() {
         setErrorMessage(error.message)
       }); 
   };
+
+  // const onCreateRental = () => {
+  //   if (currentCustomer !== '' && currentMovie !== '') {
+  //     axios.post(`${url}/${boardName}/cards/`, card)
+  //     .then((response) => {
+  //       const updatedData = [...cardList, response.data];
+  //       setCardList(updatedData);
+  //       setErrorMessage('');
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error.message);
+  //     });
+  //   }
+  // }
 
   return (
     <Router>
@@ -141,6 +164,7 @@ export default function App() {
         { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
         <h2>Customer Selected</h2>
         { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
+        {/* <button onClick={}className='create_rental'>Create Rental</button> */}
       </div>
 
     </Router>
