@@ -4,6 +4,7 @@ import CustomerDetails from './CustomerDetails'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import './Rental.css';
 
 const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
 
@@ -33,7 +34,7 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
           </Accordion.Collapse>
         </Card>
         {buttonDisplay}
-        { successfulRental ? 'Successful Rental' : ''}
+        { successfulRental ? <p>Successful Rental</p> : ''}
       </Accordion>
   </div>
 
