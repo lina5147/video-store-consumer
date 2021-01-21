@@ -14,10 +14,7 @@ import Home from './components/Home'
 import Search from './components/Search'
 import Library from './components/Library'
 import Customers from './components/Customers'
-import MovieDetails from './components/MovieDetails'
-import CustomerDetails from './components/CustomerDetails';
-import Customer from './components/Customer';
-import Movie from './components/Movie'
+import Rental from './components/Rental'
 
 
 // class App extends Component {
@@ -96,6 +93,8 @@ export default function App() {
       return movie.external_id === externalId
     })
 
+    movieToAdd['inventory'] = 10
+
     console.log(movieToAdd)
 
     const checkLibraryData = movieList.find((movie) => {
@@ -158,6 +157,12 @@ export default function App() {
     return dueDate
   }
 
+  const rental = <Rental movie={currentMovie} customer={currentCustomer} successfulRental={successfulRental} rentalCallback={onCreateRental}/>
+
+  const displaySelection = (currentCustomer !== '' || currentMovie !== '') ? rental : ''
+
+  
+
   return (
     <Router>
       <div>
@@ -183,31 +188,39 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
-            <Search search={onSearch} 
-            results={searchResults}
-            addMovie={addToLibrary}/>
+            {displaySelection}
+            <section className='page'>
+              <Search search={onSearch} results={searchResults}addMovie={addToLibrary}/>
+            </section>
           </Route>
           <Route path="/library">
+            {displaySelection}
             <section className='page'>
               <Library movieList={movieList} onSelectedMovie={selectedMovie} />
             </section>
           </Route>
           <Route path="/customers">
-            <Customers customerList={customerList} onSelectedCustomer={selectedCustomer} />
+            {displaySelection}
+            <section className='page'>
+              <Customers customerList={customerList} onSelectedCustomer={selectedCustomer} />
+            </section>
           </Route>
           <Route path="/">
-            <Home />
+            {displaySelection}
+            <section className='page'>
+              <Home />
+            </section>
           </Route>
         </Switch>
       </div>
-      <div>
+      {/* <div>
         <h2>Movie Selected</h2>
         { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
         <h2>Customer Selected</h2>
         { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
         <button onClick={() => {onCreateRental()}} className='create_rental'>Create Rental</button>
         { successfulRental ? 'Successful Rental' : ''}
-      </div>
+      </div> */}
 
     </Router>
   );
