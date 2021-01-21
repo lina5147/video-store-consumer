@@ -86,13 +86,22 @@ export default function App() {
     // console.log(currentCustomer)
   }
 
+  const addToLibrary = (externalId) => {
+    const movieToAdd = searchResults.find((movie) => {
+      return movie.external_id === externalId
+    })
 
-  // function that adds a new movie to the library
-  // parameter - external id
-  // check if movie exists in our library
-  // if it does not exist then we will push it into a new movie list array
-    // and set movie list state with that array
-  // if it does exist, send update error state with message to show on page
+    axios.post(`${URL}videos`, movieToAdd)
+    .then((response) => {
+      const updatedMovieList = [...movieList, response.data]
+      setMovieList(updatedMovieList);
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+
+  }
 
   const onSearch = (term) => {
     axios.get(`${URL}videos/?query=${term}`)
@@ -107,7 +116,13 @@ export default function App() {
 
   // const onCreateRental = () => {
   //   if (currentCustomer !== '' && currentMovie !== '') {
-  //     axios.post(`${url}/${boardName}/cards/`, card)
+
+  //     const rentalParams = {
+  //       customer_id: currentCustomer.id,
+  //       due_date: 
+  //     }
+
+  //     axios.post(`${URL}rental/${currentMovie}/check-out`, )
   //     .then((response) => {
   //       const updatedData = [...cardList, response.data];
   //       setCardList(updatedData);
@@ -144,7 +159,8 @@ export default function App() {
         <Switch>
           <Route path="/search">
             <Search search={onSearch} 
-            results={searchResults}/>
+            results={searchResults}
+            addMovie={addToLibrary}/>
           </Route>
           <Route path="/library">
             <section className='page'>
@@ -164,7 +180,7 @@ export default function App() {
         { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
         <h2>Customer Selected</h2>
         { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
-        {/* <button onClick={}className='create_rental'>Create Rental</button> */}
+        <button className='create_rental'>Create Rental</button>
       </div>
 
     </Router>

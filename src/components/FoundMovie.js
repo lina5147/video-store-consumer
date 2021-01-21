@@ -8,7 +8,7 @@ const FoundMovie = (props) => {
       <div className='movie_content'>
         <h4 className='movie_content-text'>{props.title}</h4>
         <img src={props.image_url} alt='Movie poster'/>
-        <button className='add_movie'>Add to Library</button>
+        <button onClick={() => props.addMovie(props.external_id)} className='add_movie'>Add to Library</button>
       </div>
     </div>
     //add movie button

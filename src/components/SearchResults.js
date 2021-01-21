@@ -12,6 +12,7 @@ const SearchResults = (props) => {
                 image_url={movie.image_url}
                 external_id={movie.external_id}
                 key={movie.external_id}
+                addMovie={props.addMovie}
           />
         )
     })

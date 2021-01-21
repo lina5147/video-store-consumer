@@ -8,9 +8,10 @@ const Search = (props) => {
       <h2>Search</h2>
       <SearchBar
         search={props.search}
+
       />
       { props.results !== [] ? <SearchResults
-        results={props.results}
+        results={props.results} addMovie={props.addMovie}
       /> : '' }
     </div>
 
