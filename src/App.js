@@ -123,25 +123,34 @@ export default function App() {
       }); 
   };
 
-  // const onCreateRental = () => {
-  //   if (currentCustomer !== '' && currentMovie !== '') {
+  const onCreateRental = () => {
+    if (currentCustomer !== '' && currentMovie !== '') {
 
-  //     const rentalParams = {
-  //       customer_id: currentCustomer.id,
-  //       due_date: 
-  //     }
+      const rentalParams = {
+        customerId: currentCustomer.id,
+        dueDate: createDueDate()
+      }
+      console.log(rentalParams)
 
-  //     axios.post(`${URL}rental/${currentMovie}/check-out`, )
-  //     .then((response) => {
-  //       const updatedData = [...cardList, response.data];
-  //       setCardList(updatedData);
-  //       setErrorMessage('');
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message);
-  //     });
-  //   }
-  // }
+      axios.post(`${URL}rentals/${currentMovie.title}/check-out`, rentalParams)
+      .then((response) => {
+        // const updatedData = [...cardList, response.data];
+        // setCardList(updatedData);
+        // setErrorMessage('');
+        console.log('success!')
+      })
+      .catch((error) => {
+        console.log(error.message)
+        setErrorMessage(error.message);
+      });
+    }
+  }
+
+  const createDueDate = () => {
+    const today = new Date()
+    const dueDate = new Date(today.setDate(today.getDate() + 14)).toISOString().split('T')[0]
+    return dueDate
+  }
 
   return (
     <Router>
@@ -189,7 +198,7 @@ export default function App() {
         { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
         <h2>Customer Selected</h2>
         { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
-        <button className='create_rental'>Create Rental</button>
+        <button onClick={() => {onCreateRental()}} className='create_rental'>Create Rental</button>
       </div>
 
     </Router>
