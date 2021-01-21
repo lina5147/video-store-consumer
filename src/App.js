@@ -94,10 +94,11 @@ export default function App() {
 
     const checkLibraryData = movieList.find((movie) => {
       return movie.external_id === externalId
-    }) 
+    });
 
     if (checkLibraryData) {
-      setErrorMessage('Already exists in the Libarary')
+      setErrorMessage('Already exists in the Library')
+      console.log(errorMessage)
     } else {
       axios.post(`${URL}videos`, movieToAdd)
       .then((response) => {
