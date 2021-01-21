@@ -34,7 +34,7 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
           </Accordion.Collapse>
         </Card>
         {buttonDisplay}
-        { successfulRental ? <p>Successful Rental</p> : ''}
+        { successfulRental ? <p className='success'>Successful Rental</p> : ''}
       </Accordion>
   </div>
 
