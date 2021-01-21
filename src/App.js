@@ -19,6 +19,7 @@ import CustomerDetails from './components/CustomerDetails';
 import Customer from './components/Customer';
 import Movie from './components/Movie'
 
+
 // class App extends Component {
 //   render() {
 //     return (
@@ -147,6 +148,7 @@ export default function App() {
     <Router>
       <div>
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+          <a className='navbar-brand' href="#">Leema Bean's Video Store</a>
           <ul className='nav'>
             <li className='nav-item'>
               <Link className='nav-link' to="/">Home</Link>
