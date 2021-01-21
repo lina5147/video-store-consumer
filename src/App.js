@@ -138,7 +138,7 @@ export default function App() {
 
       axios.post(`${URL}rentals/${currentMovie.title}/check-out`, rentalParams)
       .then((response) => {
-        // const updatedData = [...cardList, response.data];
+        // const updatedDatayarn  = [...cardList, response.data];
         // setCardList(updatedData);
         // setErrorMessage('');
         console.log(response.data)
