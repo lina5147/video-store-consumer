@@ -46,6 +46,7 @@ export default function App() {
   const [currentCustomer, setCurrentCustomer] = useState('');
   // const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [successfulRental, setSuccessfulRental] = useState(false)
 
   // console.log(currentMovie)
   // console.log(currentCustomer)
@@ -76,6 +77,7 @@ export default function App() {
       return movie.id === id;
     });
     setCurrentMovie(movie);
+    setSuccessfulRental(false)
   } 
 
   const selectedCustomer = (customerId) => {
@@ -83,6 +85,7 @@ export default function App() {
       return customer.id === customerId;
     });
     setCurrentCustomer(customer);
+    setSuccessfulRental(false)
     // console.log(currentCustomer)
   }
 
@@ -91,6 +94,8 @@ export default function App() {
     const movieToAdd = searchResults.find((movie) => {
       return movie.external_id === externalId
     })
+
+    console.log(movieToAdd)
 
     const checkLibraryData = movieList.find((movie) => {
       return movie.external_id === externalId
@@ -126,10 +131,9 @@ export default function App() {
   const onCreateRental = () => {
     if (currentCustomer !== '' && currentMovie !== '') {
 
-      const rentalParams = {
-        customerId: currentCustomer.id,
-        dueDate: createDueDate()
-      }
+      const rentalParams = {}
+      rentalParams['customer_id'] = currentCustomer.id
+      rentalParams['due_date'] = createDueDate()
       console.log(rentalParams)
 
       axios.post(`${URL}rentals/${currentMovie.title}/check-out`, rentalParams)
@@ -137,7 +141,8 @@ export default function App() {
         // const updatedData = [...cardList, response.data];
         // setCardList(updatedData);
         // setErrorMessage('');
-        console.log('success!')
+        console.log(response.data)
+        setSuccessfulRental(true)
       })
       .catch((error) => {
         console.log(error.message)
@@ -199,6 +204,7 @@ export default function App() {
         <h2>Customer Selected</h2>
         { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
         <button onClick={() => {onCreateRental()}} className='create_rental'>Create Rental</button>
+        { successfulRental ? 'Successful Rental' : ''}
       </div>
 
     </Router>
