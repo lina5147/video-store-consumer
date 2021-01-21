@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SearchBar.css';
 
 const SearchBar = (props) => {
     const [formFields, setFormFields] = useState({
@@ -20,24 +21,26 @@ const SearchBar = (props) => {
     };
 
     return (
-        <form
-            className='new-search__form'
-            onSubmit={onFormSubmit}
-        >
-            <div>
-                <input 
-                    onChange={onFieldChange}
-                    placeholder='search'
-                    name='search'
-                    value={formFields.search}
-                />
-                <input
-                    className='new-search__submit-button'
-                    type='submit'
-                    value='Submit'
-                />     
-            </div>
-        </form>
+        <div>
+            <form
+                className='new-search__form'
+                onSubmit={onFormSubmit}
+            >
+                <div>
+                    <input 
+                        onChange={onFieldChange}
+                        placeholder='search'
+                        name='search'
+                        value={formFields.search}
+                    />
+                    <input
+                        className='new-search__submit-button'
+                        type='submit'
+                        value='Submit'
+                    />     
+                </div>
+            </form>
+        </div>
     )
 };
 
