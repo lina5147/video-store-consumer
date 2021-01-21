@@ -169,9 +169,6 @@ export default function App() {
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
           <Link className='navbar-brand' to="/">Leema Bean's Video Store</Link>
           <ul className='nav'>
-            {/* <li className='nav-item'>
-              <Link className='nav-link' to="/">Home</Link>
-            </li> */}
             <li className='nav-item'>
               <Link className='nav-link' to="/search">Search</Link>
             </li>
@@ -213,14 +210,6 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-      {/* <div>
-        <h2>Movie Selected</h2>
-        { currentMovie !== '' ? <MovieDetails movie={currentMovie} /> : `Currently no movie is selected` }
-        <h2>Customer Selected</h2>
-        { currentCustomer !== '' ? <CustomerDetails customer={currentCustomer} /> : 'Currently no customer is selected' }
-        <button onClick={() => {onCreateRental()}} className='create_rental'>Create Rental</button>
-        { successfulRental ? 'Successful Rental' : ''}
-      </div> */}
 
     </Router>
   );

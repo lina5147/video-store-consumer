@@ -5,7 +5,7 @@ import SearchResults from './SearchResults';
 const Search = (props) => {
   return (
     <div>
-      <h2>Search</h2>
+      <h2 className='text-center'>Search</h2>
       <SearchBar
         search={props.search}
 
