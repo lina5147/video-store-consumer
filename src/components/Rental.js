@@ -6,6 +6,9 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
+
+  const buttonDisplay = (movie !== '' && customer !== '') ? <button onClick={() => {rentalCallback()}} className='btn btn-secondary btn-lg btn-block'>Create Rental</button> : ''
+  
   return (
     <div>
       <Accordion defaultActiveKey="0">
@@ -29,8 +32,8 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
             <Card.Body>{ customer !== '' ? <CustomerDetails customer={customer} /> : 'Currently no customer is selected' }</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <button onClick={() => {rentalCallback()}} className='btn btn-secondary btn-lg btn-block'>Create Rental</button>
-          { successfulRental ? 'Successful Rental' : ''}
+        {buttonDisplay}
+        { successfulRental ? 'Successful Rental' : ''}
       </Accordion>
   </div>
 
