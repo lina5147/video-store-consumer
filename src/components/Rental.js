@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button'
 import './Rental.css';
 
 const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
-
   const buttonDisplay = (movie !== '' && customer !== '') ? <button onClick={() => {rentalCallback()}} className='btn btn-secondary btn-lg btn-block'>Create Rental</button> : ''
   
   return (
@@ -37,7 +36,6 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
         { successfulRental ? <p className='success'>Successful Rental</p> : ''}
       </Accordion>
   </div>
-
   )
 };
 

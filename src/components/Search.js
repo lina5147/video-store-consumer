@@ -6,15 +6,11 @@ const Search = (props) => {
   return (
     <div>
       <h2 className='text-center'>Search</h2>
-      <SearchBar
-        search={props.search}
-
-      />
+      <SearchBar search={props.search}/>
       { props.results !== [] ? <SearchResults
         results={props.results} addMovie={props.addMovie}
       /> : '' }
     </div>
-
   )
 };
 

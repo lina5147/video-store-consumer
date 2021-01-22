@@ -16,24 +16,6 @@ import Library from './components/Library'
 import Customers from './components/Customers'
 import Rental from './components/Rental'
 
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
 export default function App() {
   const URL = 'http://localhost:3000/'
 
@@ -42,12 +24,8 @@ export default function App() {
   const [currentMovie, setCurrentMovie] = useState('');
   const [customerList, setCustomerList] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState('');
-  // const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [successfulRental, setSuccessfulRental] = useState(false)
-
-  // console.log(currentMovie)
-  // console.log(currentCustomer)
+  const [successfulRental, setSuccessfulRental] = useState(false);
 
   useEffect(() => {
     axios.get(`${URL}videos`)
@@ -69,7 +47,6 @@ export default function App() {
       });
   }, []);
 
-
   const selectedMovie = (id) => {
     const movie = movieList.find((movie) => {
       return movie.id === id;
@@ -84,18 +61,14 @@ export default function App() {
     });
     setCurrentCustomer(customer);
     setSuccessfulRental(false)
-    // console.log(currentCustomer)
   }
 
   const addToLibrary = (externalId) => {
-
     const movieToAdd = searchResults.find((movie) => {
       return movie.external_id === externalId
     })
 
     movieToAdd['inventory'] = 10
-
-    console.log(movieToAdd)
 
     const checkLibraryData = movieList.find((movie) => {
       return movie.external_id === externalId
@@ -103,7 +76,6 @@ export default function App() {
 
     if (checkLibraryData) {
       setErrorMessage('Already exists in the Library')
-      console.log(errorMessage)
     } else {
       axios.post(`${URL}videos`, movieToAdd)
       .then((response) => {
@@ -121,7 +93,6 @@ export default function App() {
     axios.get(`${URL}videos/?query=${term}`)
       .then((response) => {
         setSearchResults(response.data);
-        console.log(response.data)
       })
       .catch((error) => {
         setErrorMessage(error.message)
@@ -130,7 +101,6 @@ export default function App() {
 
   const onCreateRental = () => {
     if (currentCustomer !== '' && currentMovie !== '') {
-
       const rentalParams = {}
       rentalParams['customer_id'] = currentCustomer.id
       rentalParams['due_date'] = createDueDate()
@@ -138,9 +108,6 @@ export default function App() {
 
       axios.post(`${URL}rentals/${currentMovie.title}/check-out`, rentalParams)
       .then((response) => {
-        // const updatedDatayarn  = [...cardList, response.data];
-        // setCardList(updatedData);
-        // setErrorMessage('');
         console.log(response.data)
         setSuccessfulRental(true)
       })
@@ -149,7 +116,7 @@ export default function App() {
         setErrorMessage(error.message);
       });
     }
-  }
+  };
 
   const createDueDate = () => {
     const today = new Date()
@@ -157,11 +124,14 @@ export default function App() {
     return dueDate
   }
 
-  const rental = <Rental movie={currentMovie} customer={currentCustomer} successfulRental={successfulRental} rentalCallback={onCreateRental}/>
+  const rental = <Rental 
+    movie={currentMovie} 
+    customer={currentCustomer} 
+    successfulRental={successfulRental} 
+    rentalCallback={onCreateRental}
+    />
 
   const displaySelection = (currentCustomer !== '' || currentMovie !== '') ? rental : ''
-
-  
 
   return (
     <Router>
@@ -210,7 +180,6 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-
     </Router>
   );
 }

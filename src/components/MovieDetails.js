@@ -13,9 +13,7 @@ const MovieDetails = ({movie}) => {
         <p>Overview: {movie.overview}</p>
       </div>
     </div>
-    
-    
   )
-}
+};
 
 export default MovieDetails;

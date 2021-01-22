@@ -1,5 +1,6 @@
 import React from 'react';
 import './CustomerDetails.css';
+
 const CustomerDetails = ({customer}) => {
     return (
         <div className='customer-details'>

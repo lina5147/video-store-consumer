@@ -9,8 +9,7 @@ const Movie = (props) => {
         <img  src={props.image_url} alt='Movie poster'/>
       </div> 
    </div>
-    
   )
-}
+};
 
 export default Movie;

@@ -11,7 +11,6 @@ const FoundMovie = (props) => {
         <button onClick={() => props.addMovie(props.external_id)} className='add_movie'>Add to Library</button>
       </div>
     </div>
-    //add movie button
   )
 }
 
