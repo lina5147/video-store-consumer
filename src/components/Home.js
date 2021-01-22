@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import limabean from '../limabean.jpg';
+import limabean from '../LimaBean.jpg';
 
 const Home = () => {
   return (
