@@ -17,7 +17,7 @@ const Customers = (props) => {
 
   return (
     <div className='customers'>
-      <h4 className='customers-title'>CUSTOMERS</h4>
+      <h4 className='page-title'>CUSTOMERS</h4>
       {customerComponents}
     </div>
   )

@@ -9,10 +9,3 @@
 .customers-hover:hover {
     color: orange;
 }
-
-.customers-title {
-    text-align: center;
-    color: black;
-    padding: 2%;
-    font-size: 30px;
-}

@@ -18,7 +18,7 @@ const Library = (props) => {
 
   return (
     <div>
-      <h2 className='library-title'>Movie Library</h2>
+      <h2 className='page-title'>Movie Library</h2>
       <div className='library'>
         {movieComponents}
       </div>

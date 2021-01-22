@@ -3,11 +3,3 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.library-title {
-  text-align: center;
-  align-items: center;
-  color: black;
-  /* padding: 2%; */
-  font-size: 30px;
-}

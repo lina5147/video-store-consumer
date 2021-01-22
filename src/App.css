@@ -44,3 +44,10 @@
 .page {
   /* background-color: lightgoldenrodyellow; */
 }
+
+.page-title {
+  font-family: 'Nixie One', sans-serif;
+  text-align: center;
+  color: black;
+  padding: 1%;
+}
