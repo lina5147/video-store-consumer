@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import './Rental.css';
+import PropTypes from 'prop-types';
 
 const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
   const buttonDisplay = (movie !== '' && customer !== '') ? <button onClick={() => {rentalCallback()}} className='btn btn-secondary btn-lg btn-block'>Create Rental</button> : ''
@@ -38,5 +39,12 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
   </div>
   )
 };
+
+Rental.propTypes = {
+  movie: PropTypes.object.isRequired,
+  customer: PropTypes.object.isRequired,
+  successfulRental: PropTypes.bool.isRequired,
+  rentalCallback: PropTypes.func.isRequired,
+}
 
 export default Rental;

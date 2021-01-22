@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieDetails.css';
+import PropTypes from 'prop-types';
 
 const MovieDetails = ({movie}) => {
   return (
@@ -15,5 +16,9 @@ const MovieDetails = ({movie}) => {
     </div>
   )
 };
+
+MovieDetails.propTypes = {
+  movie: PropTypes.object.isRequired,
+}
 
 export default MovieDetails;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './CustomerDetails.css';
+import PropTypes from 'prop-types';
 
 const CustomerDetails = ({customer}) => {
     return (
@@ -16,5 +17,9 @@ const CustomerDetails = ({customer}) => {
         </div>
     )
 };
+
+CustomerDetails.propTypes = {
+    customer: PropTypes.object.isRequired,
+}
 
 export default CustomerDetails;

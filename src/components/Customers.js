@@ -1,16 +1,17 @@
 import React from 'react';
 import Customer from './Customer';
 import './Customers.css';
+import PropTypes from 'prop-types';
 
-const Customers = (props) => {
+const Customers = ({customerList, onSelectedCustomer}) => {
 
-  const customerComponents = props.customerList.map((customer) => {
+  const customerComponents = customerList.map((customer) => {
     return (
         <Customer
           id={customer.id}
           name={customer.name}
           key={customer.id}
-          onSelectedCustomer={props.onSelectedCustomer}
+          onSelectedCustomer={onSelectedCustomer}
         />
     )
   });
@@ -22,5 +23,10 @@ const Customers = (props) => {
     </div>
   )
 };
+
+Customers.propTypes = {
+  customerList: PropTypes.array.isRequired,
+  onSelectedCustomer: PropTypes.func.isRequired,
+}
 
 export default Customers;

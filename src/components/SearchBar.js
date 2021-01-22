@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
+import PropTypes from 'prop-types'
 
-const SearchBar = (props) => {
+const SearchBar = ({search}) => {
     const [formFields, setFormFields] = useState({
         search: '',
     });
@@ -13,7 +14,7 @@ const SearchBar = (props) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        props.search(formFields.search);
+        search(formFields.search);
 
         setFormFields({
             search: '',
@@ -43,5 +44,9 @@ const SearchBar = (props) => {
         </div>
     )
 };
+
+SearchBar.propTypes = {
+    search: PropTypes.func.isRequired,
+}
 
 export default SearchBar;

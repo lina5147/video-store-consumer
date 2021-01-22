@@ -2,17 +2,25 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import '../App.css';
+import PropTypes from 'prop-types';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const Search = (props) => {
+const Search = ({search, results, addMovie}) => {
   return (
     <div>
       <h2 className='page-title'>Search</h2>
-      <SearchBar search={props.search}/>
-      { props.results !== [] ? <SearchResults
-        results={props.results} addMovie={props.addMovie}
+      <SearchBar search={search}/>
+      { results !== [] ? <SearchResults
+        results={results} addMovie={addMovie}
       /> : '' }
     </div>
   )
 };
+
+Search.propTypes = {
+  search: PropTypes.func.isRequired,
+  results: PropTypes.array.isRequired,
+  addMovie: PropTypes.func.isRequired,
+}
 
 export default Search;
