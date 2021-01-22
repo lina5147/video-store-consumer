@@ -3,7 +3,6 @@ import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import '../App.css';
 import PropTypes from 'prop-types';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Search = ({search, results, addMovie}) => {
   return (
