@@ -18,7 +18,7 @@ const Customers = ({customerList, onSelectedCustomer}) => {
 
   return (
     <div className='customers'>
-      <h4 className='page-title'>CUSTOMERS</h4>
+      <h2 className='page-title'>CUSTOMERS</h2>
       {customerComponents}
     </div>
   )

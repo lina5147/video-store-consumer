@@ -3,12 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 25%;
+    padding-top: 8%;
     padding-bottom: 25%;
 }
 
 .limabean {
     color: lightgoldenrodyellow;
-    
-  
+    width: 40%;
 }
+
+

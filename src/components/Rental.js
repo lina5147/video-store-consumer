@@ -41,8 +41,8 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
 };
 
 Rental.propTypes = {
-  movie: PropTypes.object.isRequired,
-  customer: PropTypes.object.isRequired,
+  movie: PropTypes.string.isRequired,
+  customer: PropTypes.string.isRequired,
   successfulRental: PropTypes.bool.isRequired,
   rentalCallback: PropTypes.func.isRequired,
 }
