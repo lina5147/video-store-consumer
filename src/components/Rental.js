@@ -41,8 +41,10 @@ const Rental = ({movie, customer, successfulRental, rentalCallback}) => {
 };
 
 Rental.propTypes = {
-  movie: PropTypes.string.isRequired,
-  customer: PropTypes.string.isRequired,
+  // unable to add proptypes to movie and customer
+  // it changes between an empty string and object
+  // movie: PropTypes.string,
+  // customer: PropTypes.string,
   successfulRental: PropTypes.bool.isRequired,
   rentalCallback: PropTypes.func.isRequired,
 }
